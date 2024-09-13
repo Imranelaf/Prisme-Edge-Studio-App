@@ -1,1 +1,1 @@
-E-commerce platform using Next.js
+To-do list using Next.js
