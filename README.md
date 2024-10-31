@@ -1,1 +1,1 @@
-To-do list using Next.js
+Next.js
