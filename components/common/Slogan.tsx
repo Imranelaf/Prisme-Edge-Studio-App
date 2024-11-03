@@ -7,7 +7,7 @@ export const Slogan = () => {
                 <h1 className="font-bold text-3xl ">
                     <span>Made to be played</span>
                 </h1>
-                <h3>Available on PC, Xbox, and PlayStation</h3>
+                <h3>The Best in Gaming</h3>
             </div>
         </div>
         </>
