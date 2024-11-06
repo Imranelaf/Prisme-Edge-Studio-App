@@ -25,6 +25,9 @@ export const Card = () => {
   if (loading) return <h1 className="text-2xl font-semibold text-gray-700 m-8">Loading...</h1>
 
   return (
+    <> <div className='mx-auto px-5 py-8 text-center'>
+      <h1 className="text-teal-800/100 font-extrabold uppercase text-4xl tracking-wide">Our Games</h1>
+      </div>
     <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] grid-rows-[350px] gap-8 p-8">
       {games.map((game) => (
         <div key={game.id} className="relative border border-gray-300 rounded-lg overflow-hidden shadow transition-transform duration-200 cursor-pointer hover:transform hover:translate-x-1 hover:translate-y-[-5px] hover:shadow-lg">
@@ -47,5 +50,6 @@ export const Card = () => {
         <h2>Show ALL</h2>
       </div>
     </div>
+    </>
   )
 }
