@@ -12,7 +12,7 @@ export const Navbar = async () => {
             </div>
             <ul className="flex space-x-8">
                 <li>
-                    <Link href="#" className="text-lg font-medium text-gray-700 hover:text-red-700 hover:scale-105 transition-transform duration-200">
+                    <Link href="/" className="text-lg font-medium text-gray-700 hover:text-red-700 hover:scale-105 transition-transform duration-200">
                         Home
                     </Link>
                 </li>
@@ -22,7 +22,7 @@ export const Navbar = async () => {
                     </Link>
                 </li>
                 <li>
-                    <Link href="#" className="text-lg font-medium text-gray-700 hover:text-red-700 hover:scale-105 transition-transform duration-200">
+                    <Link href="/about" className="text-lg font-medium text-gray-700 hover:text-red-700 hover:scale-105 transition-transform duration-200">
                         About
                     </Link>
                 </li>
