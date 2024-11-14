@@ -32,7 +32,7 @@ function About() {
 
         <div className='founders-background'>
           <div className='founders'>
-            <h1>Meet the Founders</h1>
+            
             <FetchingFounders />
 
           </div>
