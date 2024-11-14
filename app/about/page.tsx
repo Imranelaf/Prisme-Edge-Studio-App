@@ -1,8 +1,9 @@
 import React from 'react';
 import './about.css';
-
+import { FetchingFounders } from '@/components/pages/FetchingFrounders';
 
 function About() {
+
   return (
     <div className="about-container">
       {/* Introduction Section */}
@@ -29,7 +30,14 @@ function About() {
           
         </div>
 
-        
+        <div className='founders-background'>
+          <div className='founders'>
+            <h1>Meet the Founders</h1>
+            <FetchingFounders />
+
+          </div>
+
+        </div>  
       
     </div>
   );

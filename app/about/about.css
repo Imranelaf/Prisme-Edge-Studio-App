@@ -24,6 +24,7 @@
     
 }
 
+
 .about-section img{
     
     height: 100vh;
@@ -46,4 +47,29 @@
     font-size: large;
     color: rgb(230, 227, 227);
     
+}
+
+.founders-background{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.founders{
+    height: 80%;
+    width: 80%;
+    background-color: rgb(27, 27, 71);
+    display: flex;
+    justify-content: center;
+}
+
+.founders h1{
+    color: rgb(224, 224, 224);
+    font-size: 2.5rem;
+    letter-spacing: .25rem;
+    margin: 1rem;
+
 }

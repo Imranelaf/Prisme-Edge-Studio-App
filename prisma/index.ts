@@ -3,48 +3,32 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  // Define the image data matching games with their corresponding images
-  const imageData = [
+  // Define the data
+  const FoundersData = [
     {
-      gameId: 1, // Fantasy Adventure
-      url: "https://i.ibb.co/ckYLWLM/Fantasy-Adventure.webp"
+      name: 'john Doe',
+      post: 'CIO',
+      image: "https://cdn.pixabay.com/photo/2024/05/26/11/40/business-8788635_640.jpg"
     },
     {
-      gameId: 2, // Space Conquest
-      url: "https://i.ibb.co/93JGsgc/Space-Conquest.webp"
+      name: 'Smith Row',
+      post: 'Senior game Developer',
+      image: "https://cdn.pixabay.com/photo/2021/01/09/07/33/man-5901612_640.jpg"
     },
     {
-      gameId: 3, // Mystery Island
-      url: "https://i.ibb.co/cv22xrx/DALL-E-2024-11-05-19-15-29-A-captivating-game-cover-for-a-game-titled-Mystery-Island-The-scene-shows.webp"
+      name: 'Maria Dara',
+      post: 'Senior game designer',
+      image: "https://cdn.pixabay.com/photo/2024/05/26/11/40/business-8788636_1280.jpg"
     }
   ];
 
-  try {
-    // Create all images in a single transaction
-    const createdImages = await prisma.$transaction(
-      imageData.map(img => 
-        prisma.image.create({
-          data: {
-            url: img.url,
-            gameId: img.gameId
-          }
-        })
-      )
-    );
-
-    console.log('Successfully added images:', createdImages);
-
-    // Verify the results by fetching all games with their images
-    const gamesWithImages = await prisma.game.findMany({
-      include: {
-        images: true
-      }
-    });
-
-    console.log('Games with their images:', JSON.stringify(gamesWithImages, null, 2));
-
-  } catch (error) {
-    console.error('Error adding images:', error);
+    try{
+      const founders = await prisma.founders.createMany({
+        data: FoundersData
+      })
+      console.log('The founders has been created successfully!', JSON.stringify(founders, null, 2));
+    } catch (error) {
+    console.error('Error creaying the founders:', error);
     throw error;
   }
 }
