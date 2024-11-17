@@ -47,7 +47,7 @@ export const FetchingFounders = () => {
         <div className="container mx-auto px-4">
             {/* Title Section */}
             <div className="text-center py-12">
-                <h1 className="text-teal-800 font-extrabold uppercase text-4xl tracking-wide">
+                <h1 className="text-gray-200 font-extrabold uppercase text-4xl tracking-wide">
                     Meet the Founders
                 </h1>
             </div>

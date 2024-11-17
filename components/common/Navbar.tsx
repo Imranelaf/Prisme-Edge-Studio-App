@@ -7,9 +7,11 @@ export const Navbar = async () => {
 
     return (
         <nav className="w-full min-h-[8vh] h-fit flex items-center justify-between px-8 py-4 bg-white shadow-md border-b border-gray-200">
+            <Link href={"/"}>
             <div className="text-2xl font-bold text-gray-800 transition-transform duration-200 hover:translate-x-1 hover:translate-y-[-1px] cursor-pointer">
                 Prisme Edge
             </div>
+            </Link>
             <ul className="flex space-x-8">
                 <li>
                     <Link href="/" className="text-lg font-medium text-gray-700 hover:text-red-700 hover:scale-105 transition-transform duration-200">
@@ -17,7 +19,7 @@ export const Navbar = async () => {
                     </Link>
                 </li>
                 <li>
-                    <Link href="#" className="text-lg font-medium text-gray-700 hover:text-red-700 hover:scale-105 transition-transform duration-200">
+                    <Link href="/games" className="text-lg font-medium text-gray-700 hover:text-red-700 hover:scale-105 transition-transform duration-200">
                         Games
                     </Link>
                 </li>

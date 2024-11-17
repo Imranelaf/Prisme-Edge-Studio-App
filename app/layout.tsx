@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/common/Navbar";
+import Newsletter from "@/components/common/NewsLetters";
 
 
 
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Newsletter />
       </body>
     </html>
   );

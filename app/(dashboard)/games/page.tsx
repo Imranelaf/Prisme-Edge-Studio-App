@@ -1,5 +1,7 @@
-export default function Games(){
-	return(
-		<div>This is the game page</div>
-	)
+import { Card } from '@/components/common/Card';
+
+export default function Games() {
+  return (
+    <Card showAll={false} />
+  );
 }
