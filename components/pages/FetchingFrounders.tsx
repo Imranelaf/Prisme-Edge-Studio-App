@@ -63,11 +63,13 @@ export const FetchingFounders = () => {
                         >
                             <div className="aspect-w-3 aspect-h-4 w-full">
                                 {founder.image && (
+                                <div className="w-full h-80">
                                     <Image
                                         src={founder.image}
                                         alt={founder.name}
                                         fill
                                     />
+                                 </div>
                                 )}
                             </div>
                             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 text-white">
