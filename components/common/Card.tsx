@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import type { Game } from './TypeGame'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const Card = ({ showAll = true }) => {
   const [games, setGames] = useState<Game[]>([])
@@ -14,7 +15,7 @@ export const Card = ({ showAll = true }) => {
         const data = await response.json()
         setGames(data)
       } catch (error) {
-        console.error('Error fetching games:', error)
+        console.log('Error fetching games:', error)
       } finally {
         setLoading(false)
       }
@@ -36,11 +37,12 @@ export const Card = ({ showAll = true }) => {
             <Link href={`/games/${game.id}`}>
             <div className="w-full h-full overflow-hidden">
               {game.images[0] && (
-                <img
-                  src={game.images[0].url}
-                  alt={game.title}
-                  className="w-full h-full object-cover"
-                />
+                 <Image
+                 src={game.images[0].url}
+                 alt={game.title}
+                 fill
+                 className="object-cover"
+               />
               )}
             </div>
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-200 text-white font-bold text-lg p-4">

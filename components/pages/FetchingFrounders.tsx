@@ -1,5 +1,6 @@
 'use client'
 
+import Image from "next/image";
 import { useEffect, useState } from "react"
 
 type Founder = {
@@ -62,10 +63,10 @@ export const FetchingFounders = () => {
                         >
                             <div className="aspect-w-3 aspect-h-4 w-full">
                                 {founder.image && (
-                                    <img
+                                    <Image
                                         src={founder.image}
                                         alt={founder.name}
-                                        className="w-full h-80 object-cover"
+                                        fill
                                     />
                                 )}
                             </div>
