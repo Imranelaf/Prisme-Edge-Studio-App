@@ -121,9 +121,17 @@ export default function Game() {
                         <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">
                             {game.genre}
                         </span>
+                        
                     </div>
+                    <div className="w-full flex justify-center ">
+                    <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+  <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+  <span>Download Now</span>
+</button>
+</div>
                 </div>
             </div>
+            
         </div>
     );
 }

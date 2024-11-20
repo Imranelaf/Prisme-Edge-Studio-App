@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react"
+import Skeleton from "react-loading-skeleton";
 
 type Founder = {
   id: string;
@@ -40,9 +41,21 @@ export const FetchingFounders = () => {
         return <h1 className="text-red-600 text-center text-2xl font-semibold m-8">{error}</h1>;
     }
 
-    if (founders.length === 0) {
+   /*  if (founders.length === 0) {
         return <h1 className="text-center text-2xl font-semibold m-8">Loading...</h1>;
-    }
+    } */
+    if (founders.length === 0) {
+        return (
+          <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] grid-rows-[350px] gap-8 p-8">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <div key={index} className="relative border border-gray-300 rounded-lg overflow-hidden shadow">
+                <Skeleton height={350} />
+              </div>
+            ))}
+          </div>
+        )
+      }
+      
 
     return (
         <div className="container mx-auto px-4">
