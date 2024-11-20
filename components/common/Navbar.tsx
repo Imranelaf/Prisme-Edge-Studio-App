@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { auth, signIn, signOut } from '../../auth'
 
 export const Navbar = async () => {
+    const user = true
     const session = await auth()
     console.log(session)
 
@@ -13,6 +14,11 @@ export const Navbar = async () => {
             </div>
             </Link>
             <ul className="flex space-x-8">
+                {user && <li>
+                    <Link href="/dashboard" className="text-lg font-medium text-gray-700 hover:text-red-700 hover:scale-105 transition-transform duration-200">
+                        Dashboard
+                    </Link>
+                </li>}
                 <li>
                     <Link href="/" className="text-lg font-medium text-gray-700 hover:text-red-700 hover:scale-105 transition-transform duration-200">
                         Home
