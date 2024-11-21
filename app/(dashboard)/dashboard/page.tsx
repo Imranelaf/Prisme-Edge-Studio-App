@@ -16,14 +16,15 @@ function Dashboard() {
             case 'Statistics':
                 return <Statistics />;
             default:
-                return <h1 className="text-white text-center">Welcome to the Dashboard</h1>;
+                return <h1 className="text-black text-xl font-bold tracking-wide text-center">Welcome to the Dashboard</h1>;
         }
     };
 
     return (
-        <div className="h-screen w-full flex">
-            <div className="h-screen w-1/6 bg-black flex flex-col items-center">
-                <h1 className="text-white text-lg font-bold m-4">Dashboard</h1>
+        <div className="h-screen w-full flex flex-col sm:flex-row">
+        {/* Sidebar */}
+        <div className="w-full sm:w-1/4 lg:w-1/6 bg-black flex flex-col items-center py-4 sm:py-6">
+                <h1 className="text-white text-xl font-bold mb-4">Dashboard</h1>
                 {['Games', 'Users', 'Statistics'].map((btn) => (
                     <button
                         key={btn}
@@ -34,9 +35,11 @@ function Dashboard() {
                     </button>
                 ))}
             </div>
-            <div className="min-h-screen h-auto w-5/6 bg-indigo-300">
-                {renderContent()}
-            </div>
+
+            {/* Content */}
+            <div className="flex-1 bg-indigo-300 p-4 overflow-auto">
+            {renderContent()}
+        </div>
         </div>
     );
 }

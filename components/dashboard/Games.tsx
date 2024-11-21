@@ -1,69 +1,44 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Game } from '../common/TypeGame';
-import Image from 'next/image';
+import React, { useState } from 'react';
+
+import AddGame from './game.components/Add';
+import Default from './game.components/Default';
+import Delete from './game.components/Delete';
 
 function Games() {
-    const [games, setGames] = useState<Game[]>([]);
-    const [loading, setLoading] = useState(true);
+  const [screen, setScreen] = useState<string>("");
 
-    useEffect(() => {
-        const fetchGames = async () => {
-            setLoading(true);
-            try {
-                const response = await fetch('/api/games');
-                if (!response.ok) throw new Error('Failed to fetch games');
-                const data = await response.json();
-                setGames(data);
-            } catch (error) {
-                console.error('Error:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchGames();
-    }, []);
-
-    return loading ? (
-        <div className="text-center">Loading...</div>
-    ) : (
-        <div className='w-full flex flex-col justify-end'>
-        <button className="w-1/6 m-4 bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out">
-  Add Game
-
-</button>
-
-        <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-8 p-8">
-          
-            {games.map((item) => (
-                <div key={item.id} className="m-4">
-                    <h1>{item.title}</h1>
-                    <button
-                        className="w-full h-full relative"
-                        onClick={() => console.log(`Game with ID ${item.id} clicked`)}
-                    >
-                        <Image
-                            src={item.images[0]?.url || '/fallback.jpg'}
-                            alt={item.title || 'Game Image'}
-                            fill
-                            className="object-cover"
-                        />
-                    </button>
-                    <div className="w-full flex space-x-4">
-                        <button className="w-auto bg-green-700 rounded-md hover:text-white hover:bg-green-900 p-2">
-                            Modify
-                        </button>
-                        <button className="w-auto bg-red-700 rounded-md hover:text-white hover:bg-red-900 p-2">
-                            Delete
-                        </button>
-                    </div>
-                </div>
-            ))}
+  switch (screen) {
+    case "Add":
+      return (
+        <div className="flex flex-col">
+          <button
+            className="w-1/6 m-4 bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out"
+            onClick={() => setScreen("")}
+          >
+          Return
+          </button>
+          <AddGame />
         </div>
+      );
+    case "delete":
+      return <Delete />;
+    case "modify":
+      return <AddGame />;
+    default:
+      return ( 
+        <div>
+          <button
+            onClick={() => setScreen("Add")}
+            className="w-1/6 m-4 bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out"
+          >
+            Add Game
+          </button>
+          <Default />
         </div>
-    );
+      );
+  }
 }
 
 export default Games;
