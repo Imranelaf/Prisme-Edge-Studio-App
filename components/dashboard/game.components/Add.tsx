@@ -6,7 +6,7 @@ interface Game {
   title: string;
   genre: string | null;
   description: string | null;
-  releaseDate: Date | null;
+  releaseDate: string; // Changed to string for easier input handling
   platform: string[];
   price: number | null;
   rating: number | null;
@@ -17,7 +17,18 @@ interface Game {
 }
 
 function AddGame() {
-  const [data, setData] = useState<Game>()
+  const [data, setData] = useState<Game>({
+    id: 0,
+    title: '',
+    genre: '',
+    description: '',
+    releaseDate: '',
+    platform: [],
+    price: null,
+    rating: null,
+    images: [],
+  });
+
   const [images, setImages] = useState<string[]>(['']);
 
   const handleImageChange = (index: number, value: string) => {
@@ -35,21 +46,36 @@ function AddGame() {
     setImages(updatedImages);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleData = (id: keyof Game, value: string | number | string[]) => {
+    setData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submit button clicked");
+
+    const formattedData = {
+      ...data,
+      images: images.map((url, index) => ({ id: index + 1, url })),
+    };
+
+    console.log('Game Data Submitted:', formattedData);
   };
 
   return (
     <div className="w-full max-w-lg mx-auto mt-8 p-6 mb-12 bg-white shadow-md rounded-lg">
       <h1 className="text-xl font-bold mb-4 text-center text-gray-800">Add New Game</h1>
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
           <label className="block text-sm font-medium text-gray-700" htmlFor="title">
             Title
           </label>
           <input
             id="title"
+            value={data.title}
+            onChange={(e) => handleData('title', e.target.value)}
             type="text"
             placeholder="Enter game title"
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -62,6 +88,8 @@ function AddGame() {
           </label>
           <input
             id="genre"
+            value={data.genre || ''}
+            onChange={(e) => handleData('genre', e.target.value)}
             type="text"
             placeholder="Enter game genre"
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -74,6 +102,8 @@ function AddGame() {
           </label>
           <textarea
             id="description"
+            value={data.description || ''}
+            onChange={(e) => handleData('description', e.target.value)}
             placeholder="Enter game description"
             rows={3}
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -86,6 +116,8 @@ function AddGame() {
           </label>
           <input
             id="releaseDate"
+            value={data.releaseDate}
+            onChange={(e) => handleData('releaseDate', e.target.value)}
             type="date"
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
@@ -97,6 +129,8 @@ function AddGame() {
           </label>
           <input
             id="price"
+            value={data.price || ''}
+            onChange={(e) => handleData('price', +e.target.value)}
             type="number"
             placeholder="Enter game price"
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -133,12 +167,11 @@ function AddGame() {
         </div>
 
         <button
-        onClick={handleSubmit}
-      type="submit"
-      className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out"
-    >
-      Add Game
-    </button>
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out"
+        >
+          Add Game
+        </button>
       </form>
     </div>
   );
