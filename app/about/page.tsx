@@ -1,5 +1,6 @@
 import React from 'react';
 import { FetchingFounders } from '@/components/pages/FetchingFrounders';
+import Newsletter from '@/components/common/NewsLetters';
 
 function About() {
   return (
@@ -35,6 +36,7 @@ function About() {
           <FetchingFounders />
         </div>
       </div>
+      <Newsletter />
     </div>
   );
 }

@@ -37,9 +37,9 @@ function Dashboard() {
             </div>
 
             {/* Content */}
-            <div className="flex-1 bg-indigo-300 p-4 overflow-auto">
-            {renderContent()}
-        </div>
+            <div className="flex-1 bg-indigo-300 p-4 overflow-auto min-h-screen h-auto">
+  {renderContent()}
+</div>
         </div>
     );
 }

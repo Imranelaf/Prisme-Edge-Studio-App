@@ -3,7 +3,7 @@ import React from 'react';
 function Newsletter() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-6">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl w-full flex flex-col md:flex-row">
+      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl w-full flex flex-row md:flex-row">
         
       
         <div className="md:w-1/2 pr-0 md:pr-8 mb-6 md:mb-0">
@@ -23,27 +23,6 @@ function Newsletter() {
               Subscribe
             </button>
           </form>
-        </div>
-
-      
-        <div className="md:w-1/2 pl-0 ml-9 md:pl-8 text-gray-700">
-          <h3 className="text-xl font-bold text-gray-800 mb-4">Contact</h3>
-          <p className="mb-2">Info@mysite.com</p>
-          <p className="mb-6">Tel: 123-456-7890</p>
-
-          <h3 className="text-xl font-bold text-gray-800 mb-4">Social</h3>
-          <ul className="mb-6">
-            <li className="mb-1">Discord</li>
-            <li className="mb-1">Twitch</li>
-            <li className="mb-1">Facebook</li>
-            <li className="mb-1">YouTube</li>
-            <li className="mb-1">Twitter</li>
-            <li className="mb-1">LinkedIn</li>
-          </ul>
-
-          <h3 className="text-xl font-bold text-gray-800 mb-4">Address</h3>
-          <p>500 Terry Francine St</p>
-          <p>San Francisco, CA 94158</p>
         </div>
 
       </div>

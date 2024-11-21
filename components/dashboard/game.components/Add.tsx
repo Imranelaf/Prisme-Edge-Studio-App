@@ -35,8 +35,13 @@ function AddGame() {
     setImages(updatedImages);
   };
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log("Submit button clicked");
+  };
+
   return (
-    <div className="w-full max-w-lg mx-auto mt-8 p-6 bg-white shadow-md rounded-lg">
+    <div className="w-full max-w-lg mx-auto mt-8 p-6 mb-12 bg-white shadow-md rounded-lg">
       <h1 className="text-xl font-bold mb-4 text-center text-gray-800">Add New Game</h1>
       <form className="space-y-4">
         <div>
@@ -128,11 +133,12 @@ function AddGame() {
         </div>
 
         <button
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out"
-        >
-          Add Game
-        </button>
+        onClick={handleSubmit}
+      type="submit"
+      className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out"
+    >
+      Add Game
+    </button>
       </form>
     </div>
   );
