@@ -40,10 +40,7 @@ export const FetchingFounders = () => {
     if (error) {
         return <h1 className="text-red-600 text-center text-2xl font-semibold m-8">{error}</h1>;
     }
-
-   /*  if (founders.length === 0) {
-        return <h1 className="text-center text-2xl font-semibold m-8">Loading...</h1>;
-    } */
+    
     if (founders.length === 0) {
         return (
           <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] grid-rows-[350px] gap-8 p-8">
