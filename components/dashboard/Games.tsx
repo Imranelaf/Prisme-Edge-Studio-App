@@ -22,8 +22,6 @@ function Games() {
           <AddGame />
         </div>
       );
-    case "delete":
-      return <Delete />;
     case "modify":
       return <AddGame />;
     default:

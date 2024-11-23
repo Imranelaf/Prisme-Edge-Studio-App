@@ -28,8 +28,10 @@ function AddGame() {
     images: [],
   });
 
+
   const [images, setImages] = useState<string[]>(['']);
   const [platforms, setPlatforms] = useState<string[]>(['']);
+    const [error, setError] = useState<string | null>(null);
 
   const handleImageChange = (index: number, value: string) => {
     const updatedImages = [...images];
@@ -68,28 +70,59 @@ function AddGame() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    const formattedData = {
-      ...data,
-      platform: platforms,
-      images: images.map((url) => ({ url })),
-    };
+  const formattedData = {
+    ...data,
+    platform: platforms,
+    images: images.map((url) => ({ url })),
+  };
 
-    fetch('api/games', {
+  try {
+    const res = await fetch('/api/games', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formattedData),
+    });
+
+    if (!res.ok) {
+      // Extract error message from response
+      const errorData = await res.json();
+      setError(errorData.error || 'Something went wrong'); // Display error message
+      return;
+    }
+
+    alert('Game Created Successfully');
+    setError(null);
+    setData({
+      title: '',
+      genre: '',
+      description: '',
+      releaseDate: null,
+      platform: [],
+      price: 0,
+      rating: 0,
+      images: [],
     })
-      .then(() => alert('Game Created Successfully'))
-      .catch((err) => console.error('Error:', err));
-  };
+    setImages([])
+
+  } catch (err) {
+    console.error('Submission error:', err);
+    setError('An unexpected error occurred.');
+  }
+};
+
 
   return (
     <div className="w-full max-w-lg mx-auto mt-8 p-6 mb-12 bg-white shadow-md rounded-lg">
       <h1 className="text-xl font-bold mb-4 text-center text-gray-800">Add New Game</h1>
       <form className="space-y-4" onSubmit={handleSubmit}>
+      {error && (
+    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+      {error}
+    </div>
+  )}
         {/* Title */}
         <div>
           <label className="block text-sm font-medium text-gray-700" htmlFor="title">
@@ -100,6 +133,7 @@ function AddGame() {
             value={data.title}
             onChange={(e) => handleData('title', e.target.value)}
             type="text"
+            required
             placeholder="Enter game title"
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
@@ -115,6 +149,7 @@ function AddGame() {
             value={data.genre || ''}
             onChange={(e) => handleData('genre', e.target.value)}
             type="text"
+            required
             placeholder="Enter game genre"
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
@@ -129,6 +164,7 @@ function AddGame() {
             id="description"
             value={data.description || ''}
             onChange={(e) => handleData('description', e.target.value)}
+            required
             placeholder="Enter game description"
             rows={3}
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -144,6 +180,7 @@ function AddGame() {
             id="releaseDate"
             onChange={(e) => handleData('releaseDate', e.target.value)}
             type="date"
+            required
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
@@ -155,6 +192,7 @@ function AddGame() {
             <div key={index} className="flex items-center space-x-2 mt-2">
               <input
                 type="text"
+                required
                 placeholder="Enter platform (e.g., PC, Xbox)"
                 value={platform}
                 onChange={(e) => handlePlatformChange(index, e.target.value)}
@@ -188,6 +226,7 @@ function AddGame() {
             value={data.price || ''}
             onChange={(e) => handleData('price', +e.target.value)}
             type="number"
+            required
             placeholder="Enter game price"
             className="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
@@ -200,6 +239,7 @@ function AddGame() {
             <div key={index} className="flex items-center space-x-2 mt-2">
               <input
                 type="url"
+                required
                 placeholder="Enter image URL"
                 value={image}
                 onChange={(e) => handleImageChange(index, e.target.value)}

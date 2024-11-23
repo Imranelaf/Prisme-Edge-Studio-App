@@ -12,11 +12,11 @@ model Game {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   title       String   @db.VarChar(255)
-  genre       String?
-  description String?
+  genre       String   @db.VarChar(255)
+  description String   @db.VarChar(255)
   releaseDate String?
-  platform    String[]
-  price       Float?
+  platform    String[] 
+  price       Float   
   rating      Float?
 
   images      Image[]  // One-to-many relation with Image
