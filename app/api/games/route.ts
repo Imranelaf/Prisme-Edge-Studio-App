@@ -58,3 +58,41 @@ export async function GET(request: NextRequest) {
   }
   
 }
+
+
+export async function POST(request: NextRequest) {
+  try {
+    const data = await request.json();
+
+    const { images, ...gameInfo } = data;
+
+    const game = await prisma.game.create({
+      data: {
+        ...gameInfo,
+        images: {
+          create: images.map((image: { url: string }) => ({ url: image.url })),
+        },
+      },
+      include: {
+        images: true,
+      },
+    });
+
+    console.log('Game created successfully:', JSON.stringify(game, null, 2));
+    return NextResponse.json({ message: 'Game created successfully', game });
+  } catch (err) {
+    if (err instanceof Error) {
+      console.error('Error creating the game:', err.message);
+      return NextResponse.json(
+        { error: 'Error creating the game', details: err.message },
+        { status: 500 }
+      );
+    } else {
+      console.error('Unknown error:', err);
+      return NextResponse.json({ error: 'An unknown error occurred' }, { status: 500 });
+    }
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+

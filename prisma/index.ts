@@ -4,31 +4,57 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Define the data
-  const FoundersData = [
+  const gamesData = [
     {
-      name: 'john Doe',
-      post: 'CIO',
-      image: "https://cdn.pixabay.com/photo/2024/05/26/11/40/business-8788635_640.jpg"
+      title: 'Epic Adventure',
+      genre: 'Action',
+      description: 'An exciting action-packed game.',
+      releaseDate: '2024-01-01',
+      platform: ['PC', 'PS5'],
+      price: 59.99,
+      rating: 4.8,
+      images: {
+        create: [
+          {
+            url: 'https://cdn.pixabay.com/photo/2024/11/11/14/05/flamingo-9190160_640.jpg',
+          },
+          {
+            url: 'https://cdn.pixabay.com/photo/2023/01/24/15/11/nave-7741260_640.jpg',
+          },
+        ],
+      },
     },
     {
-      name: 'Smith Row',
-      post: 'Senior game Developer',
-      image: "https://cdn.pixabay.com/photo/2021/01/09/07/33/man-5901612_640.jpg"
+      title: 'Mystery Island',
+      genre: 'Adventure',
+      description: 'Solve mysteries on a deserted island.',
+      releaseDate:'2023-12-15',
+      platform: ['Xbox', 'PC'],
+      price: 49.99,
+      rating: 4.5,
+      images: {
+        create: [
+          {
+            url: 'https://example.com/image3.jpg',
+          },
+        ],
+      },
     },
-    {
-      name: 'Maria Dara',
-      post: 'Senior game designer',
-      image: "https://cdn.pixabay.com/photo/2024/05/26/11/40/business-8788636_1280.jpg"
-    }
   ];
 
-    try{
-      const founders = await prisma.founders.createMany({
-        data: FoundersData
-      })
-      console.log('The founders has been created successfully!', JSON.stringify(founders, null, 2));
-    } catch (error) {
-    console.error('Error creaying the founders:', error);
+  try {
+    // Create the games and associated images
+    for (const gameData of gamesData) {
+      const game = await prisma.game.create({
+        data: gameData,
+        include: {
+          images: true,
+        },
+      });
+      console.log('Game created successfully:', JSON.stringify(game, null, 2));
+    }
+  } catch (error) {
+    console.error('Error creating games:', error);
     throw error;
   }
 }
