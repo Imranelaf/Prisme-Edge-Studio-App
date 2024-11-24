@@ -96,3 +96,33 @@ export async function POST(request: NextRequest) {
   }
 }
 
+
+export async function DELETE(request: NextRequest) {
+  try {
+    // Extract ID from request body
+    const  id  = await request.json();
+
+    console.log('Game ID from request:', id);
+
+    // Delete associated images first
+    await prisma.image.deleteMany({
+      where: { gameId: id },
+    });
+
+    // Then delete the game
+    const deletedGame = await prisma.game.delete({
+      where: { id },
+    });
+
+    console.log('Game and associated images deleted successfully:', JSON.stringify(deletedGame, null, 2));
+
+    // Return success response
+    return NextResponse.json({ message: 'Game deleted successfully', deletedGame });
+  } catch (error) {
+    console.error('Error deleting the game:', error);
+    return NextResponse.json({ error: 'Failed to delete the game', details: error.message }, { status: 500 });
+  } finally {
+    // Disconnect from the database
+    await prisma.$disconnect();
+  }
+}

@@ -2,7 +2,12 @@ import React from 'react'
 
 function Footer() {
   return (
+    <>
+    <div className="w-11/12 h-[1.5px] bg-black mx-auto m-6"></div>
+
+
     <div className=" w-full text-gray-700 mt-4 flex flex-row justify-around">
+      
         <div>
           <h3 className="text-xl font-bold text-gray-800 mb-4">Contact</h3>
           <p className="mb-2">Info@mysite.com</p>
@@ -25,6 +30,7 @@ function Footer() {
           <p>San Francisco, CA 94158</p>
           </div>
         </div>
+        </>
   )
 }
 
