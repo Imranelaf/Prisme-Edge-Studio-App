@@ -1,3 +1,6 @@
+/* in this function we take game id as a props and we send it to the backend
+to handle the request*/
+
 export var Deleting = async (id: string) => {
     console.log('THE GAME ID IS ', id);
     

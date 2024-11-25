@@ -25,7 +25,7 @@ async function deleteGameById(gameId: string) {
 }
 
 // Replace with your game ID
-const gameId = '761bea88-ca1a-4071-baf5-482d5888899f';
+const gameId = '86957ef2-ec8b-4385-ad6a-0f9ff3ebaef9';
 
 deleteGameById(gameId)
   .then(() => {

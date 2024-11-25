@@ -100,9 +100,14 @@ export async function POST(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   try {
     // Extract ID from request body
-    const  id  = await request.json();
-
+    const { id } = await request.json(); // Destructure 'id' from the object
     console.log('Game ID from request:', id);
+    console.log('THIS IS THE TYPE OF ID:', typeof id);
+
+    // Ensure 'id' is a string
+    if (typeof id !== 'string') {
+      throw new Error('Invalid ID format.');
+    }
 
     // Delete associated images first
     await prisma.image.deleteMany({
@@ -120,7 +125,7 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ message: 'Game deleted successfully', deletedGame });
   } catch (error) {
     console.error('Error deleting the game:', error);
-    return NextResponse.json({ error: 'Failed to delete the game', details: error.message }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to delete the game' }, { status: 500 });
   } finally {
     // Disconnect from the database
     await prisma.$disconnect();
