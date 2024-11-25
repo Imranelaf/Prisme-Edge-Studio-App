@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 import AddGame from './game.components/Add';
 import Default from './game.components/Default';
-import Delete from './game.components/Delete';
 
 function Games() {
   const [screen, setScreen] = useState<string>("");
