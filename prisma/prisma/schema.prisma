@@ -38,3 +38,12 @@ post String
 image String
 
 }
+
+model Users{
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  image String
+  createdAt DateTime @default(now())
+  lastLogin DateTime @updatedAt
+  }
