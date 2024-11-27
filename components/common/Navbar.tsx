@@ -4,7 +4,7 @@ import { auth, signIn, signOut } from '../../auth'
 export const Navbar = async () => {
     const user = true
     const session = await auth()
-    
+    console.log(session)
 
     return (
         <nav className="w-full min-h-[8vh] h-fit flex items-center justify-between px-8 py-4 bg-white shadow-md border-b border-gray-200">
