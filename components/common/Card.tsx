@@ -14,7 +14,7 @@ export const Card = ({ showAll = true }) => {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const response = await fetch('/api/games')
+        const response = await fetch('/api/games', { next: { revalidate: 3600 } })
         if (!response.ok) throw new Error('Failed to fetch games.')
         const data = await response.json()
         setGames(data)
