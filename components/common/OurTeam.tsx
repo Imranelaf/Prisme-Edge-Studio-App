@@ -2,8 +2,10 @@ import React from 'react';
 
 function OurTeam() {
   return (
-    <div className="team-container bg-gradient-to-l from-red-200 to-red-900 py-12">
-      <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Our Team</h1>
+    <div className="team-container bg-gradient-to-l from-red-200 to-red-900 py-12 px-4">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center text-gray-800 mb-8">
+        Our Team
+      </h1>
       
       <div className="flex flex-col md:flex-row items-center justify-center mx-auto max-w-4xl">
         
@@ -14,10 +16,10 @@ function OurTeam() {
         />
         
         <div className="text-center md:text-left">
-          <h3 className="text-xl font-semibold text-gray-700 mb-4">
+          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 mb-4">
             It takes the world's best talent to change the game.
           </h3>
-          <button className="bg-teal-800/70 text-white px-6 py-3 ml-12 rounded-md border border-transparent hover:bg-white hover:text-black hover:border-black transition duration-200">
+          <button className="bg-teal-800/70 text-white px-6 py-3 rounded-md border border-transparent hover:bg-white hover:text-black hover:border-black transition duration-200 text-sm sm:text-base md:text-lg">
             Join Our Team
           </button>
         </div>
