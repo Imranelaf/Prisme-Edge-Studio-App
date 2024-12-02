@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { auth, signIn, signOut } from '../../auth'
+import Image from 'next/image'
 
 export const Navbar = async () => {
     const user = true

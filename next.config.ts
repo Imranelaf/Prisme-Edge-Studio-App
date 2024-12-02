@@ -10,7 +10,7 @@ to optimize images hosted on this domain.
 */
 const nextConfig: NextConfig = {
   images: {
-    domains: ['i.ibb.co', "cdn.pixabay.com", 'images.unsplash.com'], // Allow images from i.ibb.co and pixabay
+    domains: ['i.ibb.co', "cdn.pixabay.com", 'images.unsplash.com', "lh3.googleusercontent.com"], // Allow images from i.ibb.co and pixabay
   },
 };
 export default nextConfig;
