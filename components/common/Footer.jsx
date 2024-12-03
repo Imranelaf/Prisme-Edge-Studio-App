@@ -61,7 +61,7 @@ function Footer() {
       {/* Footer Bottom */}
       <div className="bg-gray-200 py-4">
         <p className="text-center text-gray-600 text-sm">
-          © {new Date().getFullYear()} MySite. All rights reserved.
+          © {new Date().getFullYear()} Prisme Edge Studio. All rights reserved.
         </p>
       </div>
     </>
