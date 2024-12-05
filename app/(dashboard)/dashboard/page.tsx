@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import Games from '@/components/dashboard/Games';
-import Statistics from '@/components/dashboard/Statistics';
 import Users from '@/components/dashboard/Users';
 
 function Dashboard() {
@@ -13,8 +12,6 @@ function Dashboard() {
                 return <Games />;
             case 'Users':
                 return <Users />;
-            case 'Statistics':
-                return <Statistics />;
             default:
                 return <h1 className="text-black text-xl font-bold tracking-wide text-center">Welcome to the Dashboard</h1>;
         }
@@ -25,7 +22,7 @@ function Dashboard() {
         {/* Sidebar */}
         <div className="w-full sm:w-1/4 lg:w-1/6 bg-black flex flex-col items-center py-4 sm:py-6">
                 <h1 className="text-white text-xl font-bold mb-4">Dashboard</h1>
-                {['Games', 'Users', 'Statistics'].map((btn) => (
+                {['Games', 'Users'].map((btn) => (
                     <button
                         key={btn}
                         className="bg-blue-500 m-2 w-4/5 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"

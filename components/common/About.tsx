@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 function About() {
@@ -21,9 +22,9 @@ function About() {
       </p>
 
       {/* Button */}
-      <button className="bg-teal-800 text-white px-6 py-3 rounded-md border border-transparent hover:bg-white hover:text-black hover:border-black transition duration-200 text-sm sm:text-base md:text-lg">
+      <Link href='/about' className="bg-teal-800 text-white px-6 py-3 rounded-md border border-transparent hover:bg-white hover:text-black hover:border-black transition duration-200 text-sm sm:text-base md:text-lg">
         Learn more
-      </button>
+      </Link>
     </div>
   );
 }

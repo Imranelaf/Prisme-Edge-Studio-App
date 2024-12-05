@@ -24,7 +24,11 @@ function Newsletter() {
             </button>
           </form>
         </div>
-
+          <div className='p-8 max-w-4xl w-1/2 flex flex-row md:flex-row' 
+          style={{ backgroundImage: "url('/images/newsletter.webp')", backgroundSize:'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'  }}
+          >
+            
+          </div>
       </div>
     </div>
   );
