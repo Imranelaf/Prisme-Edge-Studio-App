@@ -3,10 +3,9 @@ import React from 'react';
 function Newsletter() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-6">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl w-full flex flex-row md:flex-row">
-        
-      
-        <div className="md:w-1/2 pr-0 md:pr-8 mb-6 md:mb-0">
+      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl w-full flex flex-col md:flex-row">
+        {/* Text Section */}
+        <div className="w-full md:w-1/2 pr-0 md:pr-8 mb-6 md:mb-0">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Subscribe to our Newsletter</h2>
           <p className="text-gray-600 mb-6">Get the latest updates, news, and exclusive offers directly to your inbox.</p>
 
@@ -24,11 +23,17 @@ function Newsletter() {
             </button>
           </form>
         </div>
-          <div className='p-8 max-w-4xl w-1/2 flex flex-row md:flex-row' 
-          style={{ backgroundImage: "url('/images/newsletter.webp')", backgroundSize:'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'  }}
-          >
-            
-          </div>
+
+        {/* Image Section */}
+        <div
+          className="w-full md:w-1/2 h-64 md:h-auto flex justify-center items-center"
+          style={{
+            backgroundImage: "url('/images/newsletter.webp')",
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }}
+        ></div>
       </div>
     </div>
   );
