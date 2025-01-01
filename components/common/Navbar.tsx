@@ -4,9 +4,10 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { handleSignIn, handleSignOut } from '../../actions'
 import { usePathname } from 'next/navigation'
+import { Session } from 'next-auth'
 
 type NavbarProps = {
-    session: any
+    session: Session | null;
 }
 
 export const Navbar = ({ session }: NavbarProps) => {

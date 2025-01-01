@@ -49,8 +49,8 @@ export async function GET(request: NextRequest) {
     }
     return NextResponse.json(data)
     
-  } catch (error) {
-    console.error('Error:', error)
+  } catch (_error) {
+    console.error('Error:', _error)
     return NextResponse.json(
       { error: 'Error fetching games' },
       { status: 500 }
@@ -80,15 +80,15 @@ export async function POST(request: NextRequest) {
 
     console.log('Game created successfully:', JSON.stringify(game, null, 2));
     return NextResponse.json({ message: 'Game created successfully', game });
-  } catch (err) {
-    if (err instanceof Error) {
-      console.error('Error creating the game:', err.message);
+  } catch (_err) {
+    if (_err instanceof Error) {
+      console.error('Error creating the game:', _err.message);
       return NextResponse.json(
-        { error: 'Error creating the game', details: err.message },
+        { error: 'Error creating the game', details: _err.message },
         { status: 500 }
       );
     } else {
-      console.error('Unknown error:', err);
+      console.error('Unknown error:', _err);
       return NextResponse.json({ error: 'An unknown error occurred' }, { status: 500 });
     }
   } finally {

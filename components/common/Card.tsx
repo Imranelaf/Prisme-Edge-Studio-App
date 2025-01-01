@@ -14,19 +14,27 @@ export const Card = ({ showAll = true }) => {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const response = await fetch('/api/games', { next: { revalidate: 3600 } })
-        if (!response.ok) throw new Error('Failed to fetch games.')
-        const data = await response.json()
-        setGames(data)
-      } catch (error: any) {
-        console.error('Error fetching games:', error)
-        setError(error.message)
+        const response = await fetch('/api/games', { next: { revalidate: 3600 } });
+        if (!response.ok) throw new Error('Failed to fetch games.');
+        
+        const data = await response.json();
+        setGames(data);
+      } catch (error) {
+        if (error instanceof Error) {
+          console.error('Error fetching games:', error.message);
+          setError(error.message);
+        } else {
+          console.error('Unexpected error:', error);
+          setError('An unexpected error occurred.');
+        }
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    fetchGames()
-  }, [])
+    };
+  
+    fetchGames();
+  }, []);
+  
 
   if (error) return <p className="text-red-500 text-center p-4">{error}</p>
 

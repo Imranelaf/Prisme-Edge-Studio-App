@@ -16,8 +16,8 @@ function About() {
 
       {/* Description */}
       <p className="text-gray-600 max-w-xl mx-auto mb-8 text-sm sm:text-base md:text-lg">
-        I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double-click me
-        to add your own content and make changes to the font. I’m a great place for you to tell a story and let your
+        I&apos;m a paragraph. Click here to add your own text and edit me. It&apos;s easy. Just double-click me
+        to add your own content and make changes to the font. I&apos;m a great place for you to tell a story and let your
         users know a little more about you.
       </p>
 
