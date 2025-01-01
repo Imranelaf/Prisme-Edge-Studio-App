@@ -65,9 +65,7 @@ function Default() {
               />
             </button>
             <div className="w-full flex space-x-4">
-              <button className="w-auto bg-green-700 rounded-md hover:text-white hover:bg-green-900 p-2">
-                Modify
-              </button>
+
               <button
                 className="w-auto bg-red-700 rounded-md hover:text-white hover:bg-red-900 p-2"
                 onClick={() => handleDelete(item.id)}
