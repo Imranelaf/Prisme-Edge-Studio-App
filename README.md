@@ -49,6 +49,7 @@ GOOGLE_CLIENT_SECRET=your-google-client-secret
 
 #### IV. Set up the database:
 ```bash
+cd prisma
 npx prisma migrate dev
 ```
 
