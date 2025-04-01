@@ -1,6 +1,10 @@
 
 # Prisme Edge Studio App : A **Next.js** application for a gaming company.  
 This project leverages **Prisma** for database management, **NextAuth** for authentication, and **TailwindCSS** for a responsive and modern UI.
+---
+![game](https://github.com/user-attachments/assets/4b9d7468-d731-4af0-b204-ceb5d4a050f3)
+![front](https://github.com/user-attachments/assets/1667c0b0-7e5c-4452-b779-e4faa901f9b9)
+
 
 ---
 
